@@ -1,0 +1,27 @@
+
+<div class="container" *ngIf = 'book'>
+    <div class="box">
+        <div class="img-holder">
+            <img src= {{book.img}}>   
+        </div>
+        <div class="basic-info">
+            <h1><b>{{book.name}} </b></h1>
+
+            <ngb-rating [(rate)] = book.rating  [max]="5" [readonly]="true"></ngb-rating>
+            <h2>Autor: <b>{{book.author}}</b></h2>
+            <span>{{book.price}} RSD</span>
+            <div class="options">
+                <a><button mat-raised-button color="accent">Kupi odmah</button></a>
+                <a><button mat-raised-button color="accent" (click)="addToCart()">Dodaj u korpu</button></a>
+            </div>
+        </div>
+        <div class="description">
+            <h4>Broj strana: {{book.pages}}</h4>
+            <h4>Žanr: {{book.pages}}</h4>
+            <h4>Izdavač: {{book.publisher}}</h4>
+            <h4>Godina izdavanja: {{book.year}}</h4>
+        </div>
+    </div>
+
+</div>
+

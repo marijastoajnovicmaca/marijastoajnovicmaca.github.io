@@ -1,0 +1,37 @@
+.content {
+    padding: 16px;
+}
+
+
+mat-card  img{
+    object-fit: cover; /*this makes the image in src fit to the size specified below*/
+    width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 80%;
+  }
+
+
+
+.content mat-card-content{
+    font-size: medium;
+}
+
+.search-book {
+    padding: 2%;
+    margin: auto;
+  }
+  
+  .form-control {
+    border: 3px solid #000;
+    border-radius: 5px;
+    height: 50px;
+    line-height: normal;
+    color: #282828;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    user-select: auto;
+    font-size: 16px;
+    padding:0 6px;
+    padding-left: 12px;
+  }
+  
