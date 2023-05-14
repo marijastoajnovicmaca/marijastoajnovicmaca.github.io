@@ -1,0 +1,59 @@
+<h2>Napredna pretraga</h2><br>
+  
+<!-- authors checkbox-ovi -->
+<h3>Autor</h3>
+<div *ngFor="let author of authors">
+  <label>
+    <input type="checkbox"
+           [value]="author"
+           [checked]="selectedAuthors.includes(author)"
+           (change)="toggleAuthorSelection(author)">
+    {{ author }}
+  </label>
+</div>
+  
+  <!-- genres checkbox-ovi -->
+<h3>Žanr</h3>
+<div *ngFor="let genre of genres">
+  <label>
+    <input type="checkbox"
+           [value]="genre"
+           [checked]="selectedGenres.includes(genre)"
+           (change)="toggleGenreSelection(genre)">
+    {{ genre }}
+  </label>
+</div>
+
+  <!-- publishers checkbox-ovi -->
+<h3>Izdavač</h3>
+<div *ngFor="let publisher of publishers">
+  <label>
+    <input type="checkbox"
+           [value]="publisher"
+           [checked]="selectedPublishers.includes(publisher)"
+           (change)="togglePublisherSelection(publisher)">
+    {{ publisher }}
+  </label>
+</div>
+
+
+    <label for="rate">Unesite najmanju ocene knjige:</label>
+    <input type="number" id="rate" min="0" max="5" [(ngModel)]="minRate"> <br>
+
+    <span>Broj strana</span>
+    <mat-slider min={{pages.min}} max={{pages.max}} step="10" showTickMarks discrete [displayWith]="formatLabel">
+      <input value = {{pages.max}} matSliderThumb>
+    </mat-slider><br>
+
+    <span>Cena</span>
+    <mat-slider min={{price.min}} max={{price.max}} step="10" showTickMarks discrete [displayWith]="formatLabel">
+      <input value = {{price.max}} matSliderThumb>
+    </mat-slider><br>
+
+    <span>Godina izdanja</span><br>
+    <mat-slider min={{year.min}} max={{year.max}} step="1" showTickMarks discrete [displayWith]="formatLabel">
+      <input value={{year.min}} matSliderStartThumb>
+      <input value={{year.max}} matSliderEndThumb>
+    </mat-slider><br>
+
+

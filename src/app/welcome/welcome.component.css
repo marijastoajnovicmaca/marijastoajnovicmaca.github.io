@@ -34,4 +34,11 @@ mat-card  img{
     padding:0 6px;
     padding-left: 12px;
   }
+
+  mat-sidenav {
+    width: 100%;
+}
+
+
+  
   

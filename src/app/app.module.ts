@@ -18,10 +18,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BarRatingModule } from "ngx-bar-rating";
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatListModule} from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatDividerModule} from '@angular/material/divider';
+import { FilterComponent } from './components/filter/filter.component';
 
 
 
@@ -31,7 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     WelcomeComponent,
     BookDetailsComponent,
-    HeaderComponent
+    HeaderComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BarRatingModule,
     NgbModule,
     MatDialogModule,
+    MatSidenavModule,
+    MatListModule,
+    MatSliderModule,
+    MatDividerModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [BookDetailsComponent]

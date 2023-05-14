@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { books } from '../book-data';
+import { Book } from '../book';
+import { WelcomeComponent } from '../welcome/welcome.component';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +10,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+
+  @Output() filterClick = new EventEmitter();
+
+  onFilterClick() {
+    this.filterClick.emit();
+  }
 
 }

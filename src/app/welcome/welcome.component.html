@@ -1,41 +1,45 @@
+<mat-sidenav-container fxLayout="row">
+  <mat-sidenav #sidenav fxFlex = "30%" fxFlex.xs="80%" fxFlex.sm="50%" >
+    <app-filter (filteredBooks)="receiveFilteredBooks($event)"></app-filter>
+  </mat-sidenav>
 
 
-<app-header>
-</app-header>
+  
 
-<p  >
-  <mat-form-field appearance="fill" class="search-book" fxFlex = "60%" fxFlex.xs="100%" fxFlex.sm="60%">
-    <mat-label>Pretraži knjige</mat-label>
-    <input matInput placeholder="Unesite ime knjige" [(ngModel)]="filterTerm">
-    <mat-icon matPrefix>search</mat-icon>
-  </mat-form-field>
-</p>
+  <mat-sidenav-content>
+    <app-header (filterClick)="openSidenav()"></app-header>
+    <p>
+      <mat-form-field appearance="fill" class="search-book" fxFlex = "60%" fxFlex.xs="100%" fxFlex.sm="60%">
+        <mat-label>Pretraži knjige</mat-label>
+        <input matInput placeholder="Unesite ime knjige" [(ngModel)]="filterTerm">
+        <mat-icon matPrefix>search</mat-icon>
+      </mat-form-field>
+    </p>
 
-<div class="content">
-  <div fxLayout = "row wrap" fxLayoutGap = "16px grid">
-    <div fxFlex = "20%" fxFlex.xs="100%" fxFlex.sm="33%"  *ngFor="let book of books | filter: filterTerm">
-      <mat-card class="mat-elevation-z4">
-        <div>
-          <a routerLink="book/{{book.bookId}}">
-            <img [src]="book.img" draggable="false">
-          </a>
-          
-        </div>
-        <mat-card-header fxLayoutAlign = "center">
-          <mat-card-title><b>{{book.name}}</b></mat-card-title>
-        </mat-card-header>
+    <div class="content">
+      <div fxLayout = "row wrap" fxLayoutGap = "16px grid">
+        <div fxFlex = "20%" fxFlex.xs="100%" fxFlex.sm="33%"  *ngFor="let book of filteredBooks | filter: filterTerm">
+          <mat-card class="mat-elevation-z4">
+            <div>
+                <img [src]="book.img"  (click)="openDialog(book)" draggable="false">
               
-        <mat-card-content  fxLayoutAlign = "center">
-          <p id = 'price'><i>Cena:</i> {{book.price}} </p>
-        </mat-card-content>
-        
-        <mat-card-actions  fxLayoutAlign = "center">
-          <button mat-raised-button color="primary" (click)="openDialog(book)" >Detalji</button>
-          <button mat-button>KUPI</button>
-        </mat-card-actions>
-      
-      </mat-card>
+            </div>
+            <mat-card-header fxLayoutAlign = "center">
+              <mat-card-title><b>{{book.name}}</b></mat-card-title>
+            </mat-card-header>
+                  
+            <mat-card-content  fxLayoutAlign = "center">
+              <p id = 'price'><i>Cena:</i> {{book.price}} </p>
+            </mat-card-content>
+            
+            <mat-card-actions  fxLayoutAlign = "center">
+              <button mat-raised-button color="primary" (click)="openDialog(book)" >Detalji</button>
+              <button mat-button>KUPI</button>
+            </mat-card-actions>
+          
+          </mat-card>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
+  </mat-sidenav-content>
+</mat-sidenav-container>
