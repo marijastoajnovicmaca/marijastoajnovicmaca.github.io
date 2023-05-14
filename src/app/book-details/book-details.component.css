@@ -11,18 +11,20 @@
 
 .container {
     background-color: var(#90e0ef);
-    width: 1000px;
     display: flex;
     justify-content: center;
 }
 
 .box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     background-color: white;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 1px rgb(0, 0, 0, 12%);
     padding: 45px;
     margin: 15px 0;
-    width: 950px;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto 1fr;
@@ -31,6 +33,12 @@
     "images description";
     grid-gap: 35px;
 }
+
+.box > div {
+    flex-basis: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+  }
 
 .box .img-holder {
     grid-area: images;
@@ -82,3 +90,19 @@ ngb-rating {
     color: #FFC107;
     font-size: 40px;
 }
+
+@media (max-width: 600px) {
+    .box {
+      flex-direction: column;
+    }
+
+    .img-holder
+    {
+        width: 100%;
+    }
+
+    ngb-rating
+    {
+        font-size: 30px;
+    }
+  }

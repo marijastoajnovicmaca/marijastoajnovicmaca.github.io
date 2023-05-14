@@ -2,58 +2,57 @@
   
 <!-- authors checkbox-ovi -->
 <h3>Autor</h3>
-<div *ngFor="let author of authors">
-  <label>
+<div  class="checkbox-wrapper-27" *ngFor="let author of authors">
+  <label class="checkbox">
     <input type="checkbox"
            [value]="author"
            [checked]="selectedAuthors.includes(author)"
            (change)="toggleAuthorSelection(author)">
-    {{ author }}
+    <span class="checkbox__icon">{{ author }}</span>
   </label>
-</div>
-  
+</div><br>
   <!-- genres checkbox-ovi -->
 <h3>Žanr</h3>
-<div *ngFor="let genre of genres">
-  <label>
+<div class="checkbox-wrapper-27" *ngFor="let genre of genres">
+  <label class="checkbox">
     <input type="checkbox"
            [value]="genre"
            [checked]="selectedGenres.includes(genre)"
            (change)="toggleGenreSelection(genre)">
-    {{ genre }}
+    <span class="checkbox__icon">{{ genre }}</span>
   </label>
-</div>
+</div><br>
 
-  <!-- publishers checkbox-ovi -->
+<!-- publishers checkbox-ovi -->
 <h3>Izdavač</h3>
-<div *ngFor="let publisher of publishers">
-  <label>
+<div class="checkbox-wrapper-27" *ngFor="let publisher of publishers">
+  <label class="checkbox">
     <input type="checkbox"
            [value]="publisher"
            [checked]="selectedPublishers.includes(publisher)"
            (change)="togglePublisherSelection(publisher)">
-    {{ publisher }}
+    <span class="checkbox__icon">{{ publisher }}</span>
   </label>
-</div>
+</div><br>
 
+<!--Filtiranje na osnovu ocena korisnika-->
+<label for="rate"><h4>Unesite najmanju ocene knjige:</h4></label>
+<input type="number" id="rate" min="0" max="5" [(ngModel)]="rateInput" (ngModelChange)="applyFilter()"> <br>
 
-    <label for="rate">Unesite najmanju ocene knjige:</label>
-    <input type="number" id="rate" min="0" max="5" [(ngModel)]="minRate"> <br>
+<h4>Broj strana</h4>
+<mat-slider min={{pages.min}} max={{pages.max}} step="10" showTickMarks discrete [displayWith]="formatLabel">
+  <input [(ngModel)]="selectedPage" matSliderThumb (ngModelChange)="applyFilter()">
+</mat-slider><br>
 
-    <span>Broj strana</span>
-    <mat-slider min={{pages.min}} max={{pages.max}} step="10" showTickMarks discrete [displayWith]="formatLabel">
-      <input value = {{pages.max}} matSliderThumb>
-    </mat-slider><br>
+<h4>Cena</h4>
+<mat-slider min={{price.min}} max={{price.max}} step="10" showTickMarks discrete [displayWith]="formatLabel"  >
+  <input [(ngModel)]="selectedPrice" matSliderThumb (ngModelChange)="applyFilter()" >
+</mat-slider><br>
 
-    <span>Cena</span>
-    <mat-slider min={{price.min}} max={{price.max}} step="10" showTickMarks discrete [displayWith]="formatLabel">
-      <input value = {{price.max}} matSliderThumb>
-    </mat-slider><br>
+<h4>Godina izdanja</h4><br>
+<mat-slider min={{year.min}} max={{year.max}} step="1" showTickMarks discrete [displayWith]="formatLabel">
+  <input [(ngModel)]="selectedYearMin" matSliderStartThumb (ngModelChange)="applyFilter()">
+  <input [(ngModel)]="selectedYearMax" matSliderEndThumb (ngModelChange)="applyFilter()">
+</mat-slider><br>
 
-    <span>Godina izdanja</span><br>
-    <mat-slider min={{year.min}} max={{year.max}} step="1" showTickMarks discrete [displayWith]="formatLabel">
-      <input value={{year.min}} matSliderStartThumb>
-      <input value={{year.max}} matSliderEndThumb>
-    </mat-slider><br>
-
-
+<button mat-stroked-button color="warn" (click)="resetFilters()">Resetuj filtere</button>

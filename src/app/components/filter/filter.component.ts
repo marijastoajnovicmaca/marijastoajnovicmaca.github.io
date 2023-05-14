@@ -12,21 +12,25 @@ export class FilterComponent {
   @Output() filteredBooks = new EventEmitter<Book[]>();
 
   sliderValue: number = 50;
-  minRate: number = 0;
+  rateInput: number = 0;
 
   pages = books.reduce((acc, book) => {
     return {
       min: Math.min(acc.min, book.pages),
-      max: Math.max(acc.max, book.pages)
+      max: Math.max(acc.max, book.pages) + 10
     };
   }, { min: Number.MAX_SAFE_INTEGER, max: Number.MIN_SAFE_INTEGER });
+
+  selectedPage: number = this.pages.max;
 
   price = books.reduce((acc, book) => {
     return {
       min: Math.min(acc.min, book.price),
-      max: Math.max(acc.max, book.price)
+      max: Math.max(acc.max, book.price) + 10
     };
   }, { min: Number.MAX_SAFE_INTEGER, max: Number.MIN_SAFE_INTEGER });
+
+  selectedPrice: number = this.price.max;
 
   year = books.reduce((acc, book) => {
     return {
@@ -34,6 +38,9 @@ export class FilterComponent {
       max: Math.max(acc.max, book.year)
     };
   }, { min: Number.MAX_SAFE_INTEGER, max: Number.MIN_SAFE_INTEGER });
+
+  selectedYearMin: number = this.year.min;
+  selectedYearMax: number = this.year.max;
 
   genres: string[] = [];
   authors: string[] = [];
@@ -56,10 +63,13 @@ export class FilterComponent {
       return (
         (this.selectedGenres.length === 0 || this.selectedGenres.includes(book.genre)) &&
         (this.selectedAuthors.length === 0 || this.selectedAuthors.includes(book.author)) &&
-        (this.selectedPublishers.length === 0 || this.selectedPublishers.includes(book.publisher))
+        (this.selectedPublishers.length === 0 || this.selectedPublishers.includes(book.publisher)) &&
+        (book.rating >= this.rateInput || !this.rateInput) &&
+        (book.price <= this.selectedPrice) &&
+        (book.pages <= this.selectedPage) &&
+        (book.year >= this.selectedYearMin && book.year <= this.selectedYearMax)
       );
     });
-    console.log(filteredBooks);
     this.filteredBooks.emit(filteredBooks);
   }
 
@@ -90,6 +100,18 @@ export class FilterComponent {
     } else {
       this.selectedPublishers.splice(index, 1);
     }
+    this.applyFilter();
+  }
+
+  resetFilters() {
+    this.selectedGenres = [];
+    this.selectedAuthors = [];
+    this.selectedPublishers = [];
+    this.rateInput = 0;
+    this.selectedPrice = this.price.max;
+    this.selectedPage = this.pages.max;
+    this.selectedYearMin = this.year.min;
+    this.selectedYearMax = this.year.max;
     this.applyFilter();
   }
 

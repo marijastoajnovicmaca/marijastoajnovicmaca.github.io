@@ -11,7 +11,7 @@ export const books: Book[] = [
         publisher: 'Vulkan',
         year: 2021,
         price: 850,
-        rating: 4,
+        rating: 2,
         bookId: 1
     }, 
     {
@@ -23,7 +23,7 @@ export const books: Book[] = [
       publisher: 'Laguna',
       year: 2020,
       price: 999,
-      rating: 4,
+      rating: 3,
       bookId: 2
     },{
       img: '../assets/images/mojmuz.jpg',
@@ -45,7 +45,7 @@ export const books: Book[] = [
       publisher: 'Laguna',
       year: 2005,
       price: 749,
-      rating: 4,
+      rating: 5,
       bookId: 4
     },{
       img: '../assets/images/poreklo.jpg',
@@ -56,7 +56,7 @@ export const books: Book[] = [
       publisher: 'Solaris',
       year: 2017,
       price: 2749,
-      rating: 4,
+      rating: 1,
       bookId: 5
     },{
       img: '../assets/images/autostoper.jpg',
@@ -67,7 +67,7 @@ export const books: Book[] = [
       publisher: 'Vulkan',
       year: 2013,
       price: 1115,
-      rating: 4,
+      rating: 0,
       bookId: 6
     },{
       img: '../assets/images/volime.jpg',
