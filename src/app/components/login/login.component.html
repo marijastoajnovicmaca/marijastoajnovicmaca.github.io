@@ -1,0 +1,35 @@
+<mat-toolbar class="toolbar">
+    <div>
+      <button routerLink="/" mat-icon-button>
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+</mat-toolbar>
+<img id = 'h' src="../assets/images/wallpaper1.jpeg">
+
+<body>
+    <div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+		<div class="signup">
+			<form>
+				<label for="chk" aria-hidden="true">Registracija</label>
+				<input type="text" name="fname" placeholder="Ime" required="">
+                <input type="text" name="surname" placeholder="Prezime" required="">
+                <input type="string" name="adress" placeholder="Adresa" required="">
+                <input type="number" name="phone" placeholder="Telefon" required="">
+				<input type="email" name="email" placeholder="Email" required="">
+                <input type="text" name="username" placeholder="Korisničko ime" required="">
+				<input type="password" name="pswd" placeholder="Šifra" required="">
+				<button>registruj se</button>
+			</form>
+		</div>
+		<div class="login">
+			<form>
+				<label for="chk" aria-hidden="true">Prijava</label>
+				<input type="email" name="email" placeholder="Email" required="">
+				<input type="password" name="pswd" placeholder="Password" required="">
+				<button>prijavi se</button>
+			</form>
+		</div>
+	</div>
+</body>

@@ -1,8 +1,18 @@
-<mat-toolbar>
-  <button mat-icon-button (click)="onFilterClick()">
-    <mat-icon>filter_list</mat-icon>
-  </button>
-  <span>Knjižara</span>
+<mat-toolbar class="toolbar">
+  <div>
+    <button mat-icon-button (click)="onFilterClick()">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <span>Knjižara</span>
+  </div>
+  <div>
+    <button routerLink="/login" mat-icon-button>
+      <mat-icon aria-hidden="false">login</mat-icon>
+    </button>
+    <button routerLink="/cart" mat-icon-button class="cart">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 <img id = 'h' src="../assets/images/wallpaper1.jpeg">
 

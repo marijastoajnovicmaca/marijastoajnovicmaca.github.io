@@ -66,6 +66,10 @@ mat-card  img{
     margin: 0;
     border-radius: 0;
   }
+
+button{
+  margin: 5px;
+}
 }
   
   
