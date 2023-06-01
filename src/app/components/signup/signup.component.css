@@ -1,0 +1,12 @@
+.mat-chip-list-centered{
+
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+h2 {
+
+  margin-left: 5px;
+}
+  

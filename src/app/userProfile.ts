@@ -2,9 +2,9 @@ export interface UserProfile {
     name: string;
     surname: string;
     email: string;
-    username: string;
+    phone: string;
+    address: string;
     password: string;
-    phone: number;
-    adress: string;
+    favGenres: string[];
 
 }

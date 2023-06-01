@@ -24,12 +24,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { HeaderComponent } from './header/header.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -43,7 +46,9 @@ import { LoginComponent } from './components/login/login.component';
     HeaderComponent,
     FilterComponent,
     CartComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ import { LoginComponent } from './components/login/login.component';
     MatSliderModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatChipsModule,
   ],
 
   providers: [],

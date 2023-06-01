@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
-import { MatSidenav } from '@angular/material/sidenav';
-import { books } from '../book-data';
-import { Book } from '../book';
-import { WelcomeComponent } from '../welcome/welcome.component';
+import { NavigationEnd, Router, UrlSegment } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
+import { isEqual } from 'lodash';
 
 @Component({
   selector: 'app-header',
@@ -16,5 +15,29 @@ export class HeaderComponent {
   onFilterClick() {
     this.filterClick.emit();
   }
+
+  constructor(private router: Router, public authService: AuthenticationService) {
+  }
+
+  getCurrentRoute(): string {
+    return this.router.url; // Dobijanje trenutne rute kao string
+  }
+
+  isHome(): boolean {
+    return this.getCurrentRoute() === '/';
+  }
+
+  isLogInPage(): boolean{
+    return this.getCurrentRoute() === '/login';
+  }
+
+  isRegistrationPage(): boolean{
+    return this.getCurrentRoute() === '/signup';
+  }
+
+  isProfilePage(): boolean{
+    return this.getCurrentRoute() === '/profile';
+  }
+
 
 }

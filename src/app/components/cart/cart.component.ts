@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/cartItem';
 import { Stage } from 'src/app/cartItem';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -15,7 +16,9 @@ export class CartComponent implements OnInit {
   bookName!: string;
   inputValue = "";
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, public authService: AuthenticationService) { 
+
+  }
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();

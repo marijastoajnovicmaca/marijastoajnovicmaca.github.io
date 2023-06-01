@@ -1,0 +1,61 @@
+<app-header></app-header>
+
+<div class="profile">
+    <h2>Profil</h2>
+  
+    <div *ngIf="userProfile" class="profile-info">
+      <p><strong>Ime:</strong> {{ userProfile.name }}</p>
+      <p><strong>Prezime:</strong> {{ userProfile.surname}}</p>
+      <p><strong>Email:</strong> {{ userProfile.email }}</p>
+      <p><strong>Šifra</strong> {{ userProfile.password }}</p>
+      <p><strong>Broj telefona:</strong> {{ userProfile.phone }}</p>
+      <p><strong>Adresa:</strong> {{ userProfile.address }}</p>
+      <p><strong>Omiljeni žanrovi:</strong> {{ userProfile.favGenres }}</p>
+    </div>
+
+    <div class="button-container">
+        <button  (click)="openEditMode()" mat-flat-button color="primary" [disabled]="isEditMode">Ažuriraj profil</button>
+    </div>
+
+    <div class="button-container">
+        <button (click)="logout()" mat-flat-button color="primary">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </div>
+   
+    <div *ngIf="isEditMode">
+        <!-- Forma za ažuriranje profila -->
+        <form id="forma" (ngSubmit)="updateProfile()">
+          <p>
+            <label for="firstName">Ime:</label>
+            <input type="text" id="firstName" [(ngModel)]="userProfile!.name" name="firstName">
+          </p>
+          <p>
+            <label for="lastName">Prezime:</label>
+            <input type="text" id="lastName" [(ngModel)]="userProfile!.surname" name="lastName">
+          </p>
+          <p>
+            <label for="email">Broj telefona:</label>
+            <input type="email" id="phone" [(ngModel)]="userProfile!.phone" name="phone">
+          </p>
+          <p>
+            <label for="email">Adresa:</label>
+            <input type="email" id="address" [(ngModel)]="userProfile!.address" name="address">
+          </p>
+          <mat-chip-listbox name="genre" [(ngModel)]="userProfile!.favGenres" multiple required>
+            <mat-chip-option
+              *ngFor="let option of uniqueGenres"
+              [value]="option"
+              >
+              {{option}}
+            </mat-chip-option>
+          </mat-chip-listbox>
+    
+          <div class="button-container">
+            <button type="submit" mat-flat-button color="primary">Sačuvaj</button>
+          </div>
+        </form>
+      </div>
+  
+    <p *ngIf="!userProfile" class="loading">Učitavanje profila...</p>
+</div>

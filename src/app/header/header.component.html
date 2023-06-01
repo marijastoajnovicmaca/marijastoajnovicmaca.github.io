@@ -1,13 +1,23 @@
 <mat-toolbar class="toolbar">
   <div>
-    <button mat-icon-button (click)="onFilterClick()">
-      <mat-icon>filter_list</mat-icon>
-    </button>
-    <span>Knjižara</span>
+    <div *ngIf="isHome()">
+      <button  mat-icon-button (click)="onFilterClick()">
+        <mat-icon>filter_list</mat-icon>
+      </button>
+      <span>Knjižara</span>
+    </div>
+    <div *ngIf="!isHome()">
+      <button routerLink="/" mat-icon-button>
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
   </div>
   <div>
-    <button routerLink="/login" mat-icon-button>
+    <button routerLink="/login" *ngIf="!authService.isAuthenticated() && !(isLogInPage() || isRegistrationPage())" mat-icon-button >
       <mat-icon aria-hidden="false">login</mat-icon>
+    </button>
+    <button routerLink="/profile" *ngIf="authService.isAuthenticated() && !isProfilePage()" mat-icon-button>
+      <mat-icon aria-hidden="false">account_circle</mat-icon>
     </button>
     <button routerLink="/cart" mat-icon-button class="cart">
       <mat-icon>shopping_cart</mat-icon>
