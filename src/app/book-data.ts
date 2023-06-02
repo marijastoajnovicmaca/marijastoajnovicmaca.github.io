@@ -1,5 +1,17 @@
 import { Book } from "./book";
+import { Review } from "./review";
+import { reviews } from "./review-data";
 
+export function calculateAverageRating(reviews: Review[]): number {
+  if (reviews.length === 0) {
+    return 0; // Vraćamo 0 ako nema recenzija
+  }
+
+  const sum = reviews.reduce((acc, review) => acc + review.star, 0);
+  const average = sum / reviews.length;
+
+  return average;
+}
 
 export const books: Book[] = [
     {
@@ -11,8 +23,9 @@ export const books: Book[] = [
         publisher: 'Vulkan',
         year: 2021,
         price: 850,
-        rating: 2,
-        bookId: 1
+        bookId: 1,
+        reviews: [reviews[0], reviews[4]],
+        rating: 0
     }, 
     {
       img: '../assets/images/majstor.jpg',
@@ -23,8 +36,9 @@ export const books: Book[] = [
       publisher: 'Laguna',
       year: 2020,
       price: 999,
-      rating: 3,
-      bookId: 2
+      bookId: 2,
+      reviews: [reviews[0], reviews[5]],
+      rating: 0
     },{
       img: '../assets/images/mojmuz.jpg',
       name: 'Moj muž',
@@ -34,8 +48,9 @@ export const books: Book[] = [
       publisher: 'Booka',
       year: 2017,
       price: 792,
-      rating: 4,
-      bookId: 3
+      bookId: 3,
+      reviews: [reviews[2], reviews[4]],
+      rating: 0
     },{
       img: '../assets/images/nastanci.jpg',
       name: 'Nastanci',
@@ -45,8 +60,9 @@ export const books: Book[] = [
       publisher: 'Laguna',
       year: 2005,
       price: 749,
-      rating: 5,
-      bookId: 4
+      bookId: 4,
+      reviews: [reviews[5], reviews[1]],
+      rating: 0
     },{
       img: '../assets/images/poreklo.jpg',
       name: 'Poreklo',
@@ -56,8 +72,9 @@ export const books: Book[] = [
       publisher: 'Solaris',
       year: 2017,
       price: 2749,
-      rating: 1,
-      bookId: 5
+      bookId: 5,
+      reviews: [reviews[0], reviews[1]],
+      rating: 0
     },{
       img: '../assets/images/autostoper.jpg',
       name: 'Autostoperski vodič kroz galaksiju',
@@ -67,8 +84,9 @@ export const books: Book[] = [
       publisher: 'Vulkan',
       year: 2013,
       price: 1115,
-      rating: 0,
-      bookId: 6
+      bookId: 6,
+      reviews: [reviews[0], reviews[4]],
+      rating: 0
     },{
       img: '../assets/images/volime.jpg',
       name: 'Voli me više od svega na svijetu',
@@ -78,8 +96,9 @@ export const books: Book[] = [
       publisher: 'Booka',
       year: 2022,
       price: 1694,
-      rating: 4,
-      bookId: 7
+      bookId: 7,
+      reviews: [],
+      rating: 0
     },{
       img: '../assets/images/uhvatizeca.jpg',
       name: 'Uhvati zeca',
@@ -89,8 +108,9 @@ export const books: Book[] = [
       publisher: 'Booka',
       year: 2020,
       price: 792,
-      rating: 4,
-      bookId: 8
+      bookId: 8,
+      reviews: [reviews[0], reviews[4]],
+      rating: 0
     },{
       img: '../assets/images/paralelni.jpg',
       name: 'Paralelni univezumi',
@@ -100,8 +120,9 @@ export const books: Book[] = [
       publisher: 'Helix',
       year: 2014,
       price: 1793,
-      rating: 4,
-      bookId: 9
+      bookId: 9,
+      reviews: [reviews[3], reviews[0]],
+      rating: 0
     },{
       img: '../assets/images/labud.jpg',
       name: 'Crni Labud',
@@ -111,7 +132,8 @@ export const books: Book[] = [
       publisher: 'Helix',
       year: 2015,
       price: 1840,
-      rating: 4,
-      bookId: 10
+      bookId: 10,
+      reviews: [reviews[3], reviews[2]],
+      rating: 0
     }
 ];

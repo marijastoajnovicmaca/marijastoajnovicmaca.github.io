@@ -27,7 +27,9 @@
             <h1>Izdavač: {{cartItem.book.publisher}}</h1>
             <h1>Godina izdavanja: {{cartItem.book.year}}</h1>
             <h1>Status: {{cartItem.stage.toString()}}</h1>
-            <ngb-rating [(rate)] = cartItem.book.rating  [max]="5" [readonly] = checkIsReadOnly(cartItem)></ngb-rating>
+            <ng-container *ngIf="checkIsPristiglo(cartItem)">
+              <ngb-rating [(rate)]="cartItem.book.rating" [max]="5" [readonly]="onRatingChange(cartItem.book.rating)"></ngb-rating>
+            </ng-container>
           </div>
         </div>
         <div class="price">{{cartItem.book.price}}</div>

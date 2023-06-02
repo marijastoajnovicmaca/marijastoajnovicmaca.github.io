@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { calculateAverageRating } from 'src/app/book-data';
 import { CartItem } from 'src/app/cartItem';
 import { Stage } from 'src/app/cartItem';
+import { Review } from 'src/app/review';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -85,13 +87,21 @@ export class CartComponent implements OnInit {
     this.cartService.searchOrders(this.inputValue);
   }
 
-  checkIsReadOnly(cartItem : CartItem): boolean {
+  checkIsPristiglo(cartItem : CartItem): boolean {
 
     if (cartItem.stage === "Pristiglo"){
+      return true;
+    }
+    return false;
+  }
+
+
+
+  onRatingChange(rating: number): boolean {
+    if (rating === 0){
       return false;
     }
     return true;
   }
-
 
 }

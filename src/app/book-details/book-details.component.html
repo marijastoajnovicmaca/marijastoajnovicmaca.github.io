@@ -8,7 +8,7 @@
             <div class="basic-info">
                 <h1><b>{{book.name}} </b></h1>
     
-                <ngb-rating [(rate)] = book.rating  [max]="5" [readonly]="true"></ngb-rating>
+                <ngb-rating [rate] = "calculateAverageRating(book.reviews)"  [max]="5" [readonly]="true"></ngb-rating>
                 <h2>Autor: <b>{{book.author}}</b></h2>
                 <span>{{book.price}} RSD</span>
                 <div class="options">
@@ -23,6 +23,16 @@
                 <h4>Izdavač: {{book.publisher}}</h4>
                 <h4>Godina izdavanja: {{book.year}}</h4>
             </div>
+            <hr>
+            <ul>
+                <h2>Recenzije</h2>
+                <li *ngFor="let review of book.reviews">
+                  <p> <b>Ocena:</b> {{ review.star }}</p>
+                  <p><b>Komentar:</b> {{ review.description }}</p>
+                  <p><b>Autor:</b> {{ review.author }}</p>
+                  <hr>
+                </li>
+              </ul>
 
         </div>
         

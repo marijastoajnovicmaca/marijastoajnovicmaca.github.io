@@ -9,3 +9,12 @@ flex: 1;
 height: 1px;
 background: #eee;
 }
+
+.expanded-input {
+    display: flex;
+    width: 100%;
+  }
+  
+  .flex-input {
+    width: 100%;
+  }

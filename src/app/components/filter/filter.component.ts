@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from 'src/app/book';
-import { books } from 'src/app/book-data';
+import { books, calculateAverageRating } from 'src/app/book-data';
+import { Review } from 'src/app/review';
 
 @Component({
   selector: 'app-filter',
@@ -57,6 +58,11 @@ export class FilterComponent {
     this.publishers = Array.from(new Set(books.map(book => book.publisher)));
   }
 
+  calculateAverageRating(reviews: Review[]): number
+  {
+    return calculateAverageRating(reviews);
+  }
+
   applyFilter() {
     // filtrirajte knjige na osnovu izabranih žanrova, autora i izdavača
     let filteredBooks = books.filter(book => {
@@ -64,7 +70,7 @@ export class FilterComponent {
         (this.selectedGenres.length === 0 || this.selectedGenres.includes(book.genre)) &&
         (this.selectedAuthors.length === 0 || this.selectedAuthors.includes(book.author)) &&
         (this.selectedPublishers.length === 0 || this.selectedPublishers.includes(book.publisher)) &&
-        (book.rating >= this.rateInput || !this.rateInput) &&
+        (calculateAverageRating(book.reviews) >= this.rateInput || !this.rateInput) &&
         (book.price <= this.selectedPrice) &&
         (book.pages <= this.selectedPage) &&
         (book.year >= this.selectedYearMin && book.year <= this.selectedYearMax)

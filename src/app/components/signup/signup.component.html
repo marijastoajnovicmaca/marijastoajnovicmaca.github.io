@@ -2,13 +2,7 @@
 
 <!-- Section: Design Block -->
 <section class="text-center">
-    <!-- Background image -->
-    <div class="p-5 bg-image" style="
-          background-image: url('../assets/images/wallpaper1.jpeg');
-          height: 500px;
-          ">
-    </div>
-    <!-- Background image -->
+ 
   
     <div class="card mx-4 mx-md-5 shadow-5-strong" style="
           margin-top: 100px;
@@ -25,14 +19,14 @@
                   <!--Name -->
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="name" class="form-control" name="firstname"  [(ngModel)]="userProfile.name" required/>
+                      <input type="text" id="name" class="form-control" name="firstname"  [(ngModel)]="userProfile.name" required pattern="[A-Za-z\s]+$"/>
                       <label class="form-label" for="name">Ime</label>
                     </div>
                   </div>
                   <!--Last name -->
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="surname" class="form-control" name="lastname"  [(ngModel)]="userProfile.surname" required/>
+                      <input type="text" id="surname" class="form-control" name="lastname"  [(ngModel)]="userProfile.surname" required pattern="[A-Za-z\s]+$"/>
                       <label class="form-label" for="surname">Prezime</label>
                     </div>
                   </div>
@@ -49,7 +43,7 @@
                   <!--Phone -->
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="number" id="phone" class="form-control" name="phonenumber" [(ngModel)]="userProfile.phone" required/>
+                      <input type="number" id="phone" class="form-control" name="phonenumber" [(ngModel)]="userProfile.phone" pattern="^[0-9]{9,}$" required/>
                       <label class="form-label" for="phone">Broj telefona</label>
                     </div>
                   </div>
@@ -57,14 +51,19 @@
     
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="email" class="form-control" name="emailadrress"  [(ngModel)]="userProfile.email" required/>
+                  <input type="email" id="email" class="form-control" name="emailadrress"  [(ngModel)]="userProfile.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" placeholder="example@servic.com"/>
                   <label class="form-label" for="email">Email adresa</label>
                 </div>
     
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <input type="password" id="pass" class="form-control" name="pass" [(ngModel)]="userProfile.password" required/>
-                  <label class="form-label" for="pass">Šifra</label>
+                <div class="expanded-input">
+                  <mat-form-field appearance="fill" class="flex-input">
+                    <mat-label>Šifra</mat-label>
+                    <input matInput [type]="showPassword ? 'text' : 'password'" name="password"  [(ngModel)]="userProfile.password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" placeholder="najmanje 8 karaktera, jedno veliko slovo, jedan specijalan karakter i jedan broj">
+                    <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                      {{showPassword?'visibility_off':'visibility'}}
+                    </mat-icon>
+                  </mat-form-field>
+                  <br>
                 </div>
 
                 <!-- Selecting genres -->

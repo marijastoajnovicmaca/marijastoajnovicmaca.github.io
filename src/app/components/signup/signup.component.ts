@@ -91,5 +91,11 @@ registerUser(): void {
   }
 }
 
+showPassword: boolean = false;
+
+togglePasswordVisibility(): void {
+  this.showPassword = !this.showPassword;
+}
+
 
 }

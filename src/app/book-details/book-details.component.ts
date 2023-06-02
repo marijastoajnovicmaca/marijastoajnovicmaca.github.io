@@ -5,6 +5,8 @@ import { CartService } from '../services/cart.service';
 import { CartItem } from '../cartItem';
 import { Stage } from '../cartItem';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Review } from '../review';
+import { calculateAverageRating } from '../book-data';
 
 @Component({
   selector: 'app-book-details',
@@ -44,5 +46,10 @@ export class BookDetailsComponent {
     this.cartService.addItem(this.cartItem);
     this.openSnackBar();
     this.dialogRef.close();
+  }
+
+  calculateAverageRating(reviews: Review[]): number
+  {
+    return calculateAverageRating(reviews);
   }
 }

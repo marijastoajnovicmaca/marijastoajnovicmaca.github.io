@@ -12,6 +12,7 @@ export class LoginComponent {
 
   email!: string;
   password!: string;
+  showPassword: boolean = false;
 
   constructor(private authService: AuthenticationService, private router: Router, private snackBar: MatSnackBar) {}
 
@@ -35,5 +36,8 @@ export class LoginComponent {
       verticalPosition: 'top' // Postavlja poziciju Snackbar-a na vrh
     });
   }
-
+  
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
 }

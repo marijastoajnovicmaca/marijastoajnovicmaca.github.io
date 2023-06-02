@@ -9,4 +9,12 @@ h2 {
 
   margin-left: 5px;
 }
-  
+
+.expanded-input {
+  display: flex;
+  width: 100%;
+}
+
+.flex-input {
+  width: 100%;
+}
