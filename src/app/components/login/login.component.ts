@@ -23,7 +23,7 @@ export class LoginComponent {
     } else if (isAuthenticated === 'wrong_password') {  
       this.openSnackBar('Pogresna sifra');
     } else if (isAuthenticated === 'email_not_found') {
-      this.openSnackBar('Ne postojeci email');
+      this.openSnackBar('Nepostojeci email');
     } else {
       this.openSnackBar('Nema registorvanih korisnika');
     }

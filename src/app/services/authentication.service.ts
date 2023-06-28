@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { UserProfile } from '../userProfile';
+import { CartService } from './cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class AuthenticationService {
   private isLoggedIn = false;
   isLoggedInChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  constructor(private cartService: CartService) {}
 
   login(email: string, password: string): string {
     const userProfilesString = sessionStorage.getItem('userProfiles');
@@ -60,32 +62,11 @@ export class AuthenticationService {
       return 'success';
     }
   }
-/** 
-  login(email: string, password: string): boolean {
 
-    const userProfilesString = sessionStorage.getItem('userProfiles');
-    if (userProfilesString) {
-      const userProfiles = JSON.parse(userProfilesString);
-
-      const existingUser = userProfiles.find((user: UserProfile) => user.email === email && user.password === password);
-      if (existingUser) {
-        this.isLoggedIn = true;
-        this.isLoggedInChange.emit(true);
-        sessionStorage.setItem('loggedInUserEmail', email);
-        return true;
-      } else {
-        return false
-       }
-    }
-    else {
-      return false;
-    }
-
-  }
-**/
   logout(): void {
     this.isLoggedIn = false;
     this.isLoggedInChange.emit(false);
+    this.cartService.clearCart();
   }
 
   isAuthenticated(): boolean {

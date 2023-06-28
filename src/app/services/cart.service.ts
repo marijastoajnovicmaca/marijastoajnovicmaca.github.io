@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CartItem } from '../cartItem';
+import { CartItem, Stage } from '../cartItem';
 
 @Injectable({
   providedIn: 'root'
@@ -49,11 +49,22 @@ export class CartService {
 
   // metoda za računanje ukupne cene
   getTotalPrice(): number {
-    return this.cartItems.reduce((total, order) => total + order.count * order.book.price, 0);
+    
+    return this.cartItems.reduce((total, order) => {
+      if (order.stage === Stage.during) {
+        return total + order.count * order.book.price;
+      }
+      return total;
+    }, 0);
   }
 
  // metoda za dobavljanje narudžbina
   getOrders(): Observable<CartItem[]> {
     return this.cartItemsSubject.asObservable();
+  }
+
+  clearCart(): void {
+    this.cartItems = [];
+    sessionStorage.removeItem('cartItems');
   }
 }
